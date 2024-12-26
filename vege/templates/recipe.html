@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+    
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    
+        tr:hover {
+            background-color: #d1ffd6;
+            transform: scale(1.02);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+    
+        td img {
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        caption {
+            font-size: 20px;
+            margin: 10px auto;
+            color: #333;
+            font-weight: bold;
+        }
+    
+        table {
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+        }
+
+        .btn {
+            padding: 7px;
+            border-radius: 10px;
+            background-color: #cf4a40;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;  
+        }
+
+        .btn2 {
+            padding: 7px;
+            border-radius: 10px;
+            background-color: #54af4c;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;  
+        }
+
+        body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+.search input {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  width: 80%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search input:focus {
+  border-color: #4CAF50;
+}
+
+.search button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.search button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search button {
+    width: 100%;
+  }
+}
+
+    </style>
+    
+</head>
+<body>
+
+    <form method="get">
+    <div class="search">
+        <label for="recipe-name">Search food</label>
+        <input type="text" name="search"  id="recipe-name" placeholder="Enter recipe name">
+        <button type="submit" >Search</button>
+    </div>
+    </form>
+
+    <table border="2">
+        <tr>
+            <th>Id</th>
+            <th>Receipe_name</th>
+            <th>receipe_description</th>
+            <th>Receipe_image</th>
+            <th>Actions</th>
+        </tr>
+    
+        {% for i in receipe %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.receipe_name}}</td>
+            <td>{{i.receipe_description}}</td>
+            <td><img src="/media/{{i.receipe_image}}" alt="" srcset="" height="150" width="150"></td>
+            <td>
+                <a href="/delete-receipe/{{i.id}}" class="btn">Delete</a>
+
+                <a href="/update-receipe/{{i.id}}" class="btn2">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Submission Form</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+} 
+
+.form-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #d35400;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #ff6f61;
+}
+
+.input-group input[type="file"] {
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #ff6f61, #ff9a9e);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #ff9a9e, #ff6f61);
+}
+
+@media (max-width: 500px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <h2>Update Your Recipe</h2>
+      <div class="input-group">
+        <label for="recipe-name">Recipe Name</label>
+        <input type="text" name="receipe_name" value="{{receipe.receipe_name}}" id="recipe-name" placeholder="Enter recipe name" required>
+      </div>
+      <div class="input-group">
+        <label for="recipe-description">Recipe Description</label>
+        <textarea id="recipe-description" value= "" name="receipe_description" placeholder="Enter recipe description" rows="5" required>{{receipe.receipe_description}}</textarea>
+      </div>
+      <div class="input-group">
+        <label for="recipe-image">Upload Image</label>
+        <input type="file" name="receipe_image" id="recipe-image" accept="image/*">
+      </div>
+      <button type="submit" class="btn">Update Recipe</button>
+    </form>
+  </div>
+
+  <!-- {{receipes}} -->
+</body>
+</html>
