@@ -20,12 +20,12 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/yourusername/recipe-hub.git
+   git clone https://github.com/yourusername/FlavorFusion.git
    ```  
 
 2. Navigate to the project directory:  
    ```bash
-   cd recipe-hub
+   cd FlavorFusion
    ```  
 
 3. Create a virtual environment and activate it:  
